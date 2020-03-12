@@ -1,0 +1,2 @@
+export const SHOW_FETCHED = "SHOW_FETCHED";
+export const EPISODE_FETCHED = "EPISODE_FETCHED";
