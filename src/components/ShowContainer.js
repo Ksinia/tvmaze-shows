@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadShow } from "../actions";
+import { loadShow, clearShow } from "../actions";
 import Show from "./Show";
 
 class ShowContainer extends Component {
@@ -8,6 +8,9 @@ class ShowContainer extends Component {
 
   componentDidMount() {
     this.props.dispatch(loadShow(this.showId));
+  }
+  componentWillUnmount() {
+    this.props.dispatch(clearShow());
   }
 
   render() {

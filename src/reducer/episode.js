@@ -1,4 +1,4 @@
-import { EPISODE_FETCHED } from "../actions";
+import { EPISODE_FETCHED, CLEAR_EPISODE } from "../actions";
 const initialState = null;
 
 export default function reducer(state = initialState, action) {
@@ -6,7 +6,9 @@ export default function reducer(state = initialState, action) {
     case EPISODE_FETCHED: {
       return action.payload;
     }
-
+    case CLEAR_EPISODE: {
+      return initialState;
+    }
     default: {
       return state;
     }

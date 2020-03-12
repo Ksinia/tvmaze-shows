@@ -1,4 +1,5 @@
 import React from "react";
+import EpisodesListContainer from "./EpisodesListContainer";
 
 function Show(props) {
   // Show title
@@ -9,8 +10,9 @@ function Show(props) {
   return props.show ? (
     <div>
       <p>{props.show.name}</p>
-      <div dangerouslySetInnerHTML={{ __html: props.show.summary }}></div>
-      <img alt="show" src={props.show.image.medium} />
+      <div dangerouslySetInnerHTML={{ __html: props.show.summary }} />
+      <img alt={props.show.name} src={props.show.image.medium} />
+      <EpisodesListContainer />
     </div>
   ) : (
     "Loading..."
