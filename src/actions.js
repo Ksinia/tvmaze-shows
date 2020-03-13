@@ -2,6 +2,22 @@ import superagent from "superagent";
 
 const baseUrl = "https://api.tvmaze.com";
 
+export const SHOWS_FETCHED = "SHOWS_FETCHED";
+
+export const loadShows = (page = 1) => async dispatch => {
+  const url = `${baseUrl}/shows`;
+  try {
+    const response = await superagent.get(url).query({ page });
+    console.log("response test:", response);
+    const action = {
+      type: SHOWS_FETCHED,
+      payload: { shows: response.body, page }
+    };
+    dispatch(action);
+  } catch (error) {
+    console.error();
+  }
+};
 export const SHOW_FETCHED = "SHOW_FETCHED";
 
 export const loadShow = showId => async dispatch => {
