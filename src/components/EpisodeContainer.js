@@ -8,7 +8,12 @@ class EpisodeContainer extends Component {
   episodeId = this.props.match.params.episodeId;
 
   componentDidMount() {
-    this.props.dispatch(loadEpisode(this.episodeId));
+    this.props
+      .dispatch(loadEpisode(this.episodeId))
+      .then(
+        () =>
+          (document.title = `s${this.props.episode.season}e${this.props.episode.number} ${this.props.episode._embedded.show.name} | TV Shows Browser`)
+      );
   }
   componentWillUnmount() {
     this.props.dispatch(clearEpisode());

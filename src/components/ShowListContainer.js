@@ -9,6 +9,7 @@ class ShowListContainer extends Component {
     const values = queryString.parse(this.props.location.search);
     const page = "page" in values && values.page ? parseInt(values.page) : 1;
     this.props.dispatch(loadShows(page));
+    document.title = "TV Shows Browser";
   }
 
   render() {

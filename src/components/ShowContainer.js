@@ -7,7 +7,11 @@ class ShowContainer extends Component {
   showId = this.props.match.params.showId;
 
   componentDidMount() {
-    this.props.dispatch(loadShow(this.showId));
+    this.props
+      .dispatch(loadShow(this.showId))
+      .then(
+        () => (document.title = `${this.props.show.name} | TV Shows Browser`)
+      );
   }
   componentWillUnmount() {
     this.props.dispatch(clearShow());
