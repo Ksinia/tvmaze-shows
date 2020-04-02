@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./ShowList.css";
+import "./ShowList.scss";
 
 function ShowsList(props) {
   return props.shows ? (
