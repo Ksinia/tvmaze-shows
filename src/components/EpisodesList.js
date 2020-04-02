@@ -3,26 +3,27 @@ import { Link } from "react-router-dom";
 
 function EpisodesList(props) {
   return props.show ? (
-    <div className="shows">
+    <div>
       <h3>List of episodes</h3>
       <ul>
-        {props.show._embedded.episodes.map(episode => {
-          const episodeStyle = episode.image && {
-            backgroundImage: "url(" + episode.image.original + ")"
-          };
-          return (
-            <li key={episode.id}>
-              <Link to={`/episode/${episode.id}`}>
-                <div className="episode" style={episodeStyle}></div>
-                <div className="show-details">
-                  <p>Season {episode.season}</p>
-                  <p>Episode {episode.number}</p>
-                  <p>{episode.name}</p>
-                </div>
-              </Link>
+        {props.show._embedded.episodes.map(episode => (
+          <Link key={episode.id} to={`/episode/${episode.id}`}>
+            <li className="episode-tile">
+              {episode.image && (
+                <img src={episode.image.medium} alt={episode.name} />
+              )}
+              <div className="episode-tile-details">
+                <p>Season {episode.season}</p>
+              </div>
+              <div className="episode-tile-details">
+                <p>Episode {episode.number}</p>
+              </div>
+              <div className="episode-tile-details">
+                <p className="episode-name">{episode.name}</p>
+              </div>
             </li>
-          );
-        })}
+          </Link>
+        ))}
       </ul>
     </div>
   ) : (

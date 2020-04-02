@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import EpisodesListContainer from "./EpisodesListContainer";
+import "./Show.scss";
 
 function Show(props) {
   // Show title
@@ -11,19 +12,21 @@ function Show(props) {
   // for that specific episode
   return props.show ? (
     <div className="show-page">
-      <Link to={"/"}>Back to all shows</Link>
-      <h3 className="show-name">{props.show.name}</h3>
+      <p>
+        <Link to={"/"}>Back to all shows</Link>
+      </p>
+      <h3 className="show-title">{props.show.name}</h3>
       <div className="show-main">
-        <div className="show-image">
-          {props.show.image && (
-            <img
-              alt={props.show.name}
-              src={props.show.image && props.show.image.original}
-            />
-          )}
-        </div>
-        <div className="show-main-details">
-          <div dangerouslySetInnerHTML={{ __html: props.show.summary }} />
+        {props.show.image && (
+          <div className="show-image">
+            <img alt={props.show.name} src={props.show.image.original} />
+          </div>
+        )}
+        <div
+          className="show-main-details"
+          dangerouslySetInnerHTML={{ __html: props.show.summary }}
+        >
+          {/* summary is provided from API as HTML */}
         </div>
       </div>
       <EpisodesListContainer />
