@@ -1,27 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./ShowList.css";
+import "./ShowList.scss";
 
 function ShowsList(props) {
   return props.shows ? (
-    <div className="shows">
-      <h3>List of shows:</h3>
+    <div>
+      <h3>List of shows</h3>
       <ul>
-        {props.shows.shows.map(show => {
-          const showStyle = show.image && {
-            backgroundImage: "url(" + show.image.medium + ")"
-          };
-          return (
-            <li key={show.id}>
-              <Link to={`/show/${show.id}`}>
-                <div className="show" style={showStyle}></div>
-                <div className="show-details">
-                  <p className="show-name">{show.name}</p>
-                </div>
-              </Link>
+        {props.shows.shows.map(show => (
+          <Link key={show.id} to={`/show/${show.id}`}>
+            <li className="show-tile">
+              {show.image && <img src={show.image.medium} alt={show.name} />}
+              <div className="show-tile-details">
+                <p className="show-name">{show.name}</p>
+              </div>
             </li>
-          );
-        })}
+          </Link>
+        ))}
       </ul>
       <div className="pages">
         {props.shows.page > 1 && (
